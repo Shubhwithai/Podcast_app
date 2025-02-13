@@ -57,6 +57,9 @@ def generate_podcast_audio(transcript, api_key):
                 st.info(f"🎵 {log['message']}")
     
     try:
+        # Set the API key globally for the fal_client
+        fal_client.api_key = api_key
+        
         result = fal_client.subscribe(
             "fal-ai/playai/tts/dialog",
             {
@@ -72,7 +75,6 @@ def generate_podcast_audio(transcript, api_key):
                     }
                 ]
             },
-            api_key=api_key,
             with_logs=True,
             on_queue_update=on_queue_update,
         )
