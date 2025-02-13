@@ -49,6 +49,8 @@ def generate_podcast_transcript(topic, api_key):
     return response.content
 
 # Function to generate podcast audio
+import os
+
 def generate_podcast_audio(transcript, api_key):
     """Convert the transcript to audio using FAL AI's TTS service."""
     def on_queue_update(update):
@@ -57,8 +59,8 @@ def generate_podcast_audio(transcript, api_key):
                 st.info(f"🎵 {log['message']}")
     
     try:
-        # Set the API key globally for the fal_client
-        fal_client.api_key = api_key
+        # Set the FAL API key as an environment variable
+        os.environ["FAL_KEY"] = api_key
         
         result = fal_client.subscribe(
             "fal-ai/playai/tts/dialog",
