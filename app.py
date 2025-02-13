@@ -124,10 +124,10 @@ with st.sidebar:
     st.markdown("[OpenRouter](https://openrouter.ai/) for `OPENROUTER_API_KEY`")
     st.markdown("[FAL AI](https://fal.ai/) for `FAL_KEY`")
 
-    openrouter_api_key = st.text_input("OpenRouter API Key", type="password")
-    fal_api_key = st.text_input("FAL API Key", type="password")
+    OPENROUTER_API_KEY = st.text_input("OpenRouter API Key", type="password")
+    FAL_KEY = st.text_input("FAL API Key", type="password")
 
-    if openrouter_api_key and fal_api_key:
+    if OPENROUTER_API_KEY and FAL_KEY:
         st.success("API Keys are set! You can now generate podcasts.")
         st.session_state['api_keys_set'] = True # Use session state to track if keys are set
     else:
